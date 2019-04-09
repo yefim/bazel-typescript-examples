@@ -1,7 +1,7 @@
 A collection of TypeScript code built by Bazel
 ================================================
 
-# How to build yourself
+## How to build yourself
 
 ``` bash
 git clone https://github.com/yefim/bazel-typescript-examples.git
