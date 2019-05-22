@@ -1,0 +1,13 @@
+{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "strict": true,
+    "noImplicitAny": false
+  },
+  "bazelOptions": {
+    "workspaceName": ""
+  }
+}
