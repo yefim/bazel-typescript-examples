@@ -3,9 +3,10 @@ A collection of TypeScript code built by Bazel
 
 ## How to build yourself
 
+### TypeScript binary with npm package
+
 ``` bash
-git clone https://github.com/yefim/bazel-typescript-examples.git
-cd bazel-typescript-examples/
+cd ts-binary-with-npm-package/
 npm install
 npm run build
 node bazel-bin/app.js
