@@ -1,25 +1,37 @@
 import {forEach} from 'lodash-es';
+import 'jquery';
 
-(function() {
-  class Person {
+const $ = (window as any).jQuery;
+
+$(document).ready(function() {
+  class Wizard {
     constructor(private name: string, private email: string) {
     }
 
     getDisplayName() {
-      return `${this.name} <${this.email}>`;
+      return `${this.name} &lt;${this.email}&gt;`;
     }
   }
 
-  const p1 = new Person('Harry Potter', 'harry@potter.com');
-  const p2 = new Person('Ron Weasley', 'ron@w.com');
-  const people = [p1, p2];
+  const databaseOfWizards: Wizard[] = [];
 
-  forEach(people, (p) => {
-    console.log(p.getDisplayName());
+  const addWizard = (wizard: Wizard): void => {
+    $('#wizards').append(`<p>${wizard.getDisplayName()}</p>`);
+  }
 
-    const pTag = document.createElement('p');
-    const node = document.createTextNode(p.getDisplayName());
-    pTag.appendChild(node);
-    document.body.appendChild(pTag);
+  const p1 = new Wizard('Harry Potter', 'harry@potter.com');
+  const p2 = new Wizard('Ron Weasley', 'ron@w.com');
+
+  databaseOfWizards.push(p1);
+  databaseOfWizards.push(p2);
+
+  forEach(databaseOfWizards, addWizard);
+
+  $('form').on('submit', function(e) {
+    e.preventDefault();
+    const [name, email] = [(this as any).name.value, (this as any).email.value];
+    (this as any).reset();
+    databaseOfWizards.push(new Wizard(name, email));
+    addWizard(databaseOfWizards[databaseOfWizards.length - 1]);
   });
-})();
+});

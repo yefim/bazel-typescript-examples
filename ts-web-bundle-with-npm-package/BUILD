@@ -12,5 +12,5 @@ load("@build_bazel_rules_nodejs//:defs.bzl", "rollup_bundle")
 rollup_bundle(
   name = "bundle",
   entry_point = "app.js",
-  deps = [":app", "@npm//lodash-es"],
+  deps = [":app", "@npm//lodash-es", "@npm//jquery"],
 )
